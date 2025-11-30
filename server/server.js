@@ -23,6 +23,8 @@ const QUEUE_TIMEOUT = 30000; // 30 seconds timeout for queue
 lobby.on('connection', (socket) => {
     console.log('A user connected to lobby:', socket.id);
 
+    socket.emit('connectionStatus', { connected: true });
+
     // Handle player joining the matchmaking queue
     socket.on('joinQueue', (playerData) => {
         const player = {
